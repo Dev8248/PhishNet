@@ -1,0 +1,5 @@
+// Top-level build file. Versions are pinned to a stable, mutually compatible set
+// (AGP 8.13.0 needs Gradle 8.13+ and JDK 17). Android Studio's AGP Upgrade Assistant can move to 9.x.
+plugins {
+    id 'com.android.application' version '9.5.1' apply false
+}

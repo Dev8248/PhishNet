@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Permissions required for Live QR Code Scanning via Camera -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <!-- Required for In-App Security Browser and Online Reputation Checks -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--
+        Intentionally NO <uses-permission> entries for SMS, contacts, phone,
+        location or storage. QR images come from the system photo picker, which needs no permission.
+    -->
+
+    <application
+        android:allowBackup="false"
+        android:label="PhishNet"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|keyboard|keyboardHidden|uiMode"
+            android:windowSoftInputMode="adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Share text or a link to PhishNet. It only fills the input box; nothing is kept. -->
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".InAppBrowserActivity"
+                  android:exported="false"
+                  android:configChanges="orientation|screenSize|keyboardHidden"
+                  android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar"/>
+    </application>
+</manifest>
